@@ -107,7 +107,11 @@ iocage fstab -a "${JAIL_NAME}" "${POOL_PATH}"/rustdesk /var/db/rustdesk-server n
 #
 #####
 
-iocage exec "${JAIL_NAME}" pkg install rustdesk-server
+if ! iocage exec "${JAIL_NAME}" pkg install -y rustdesk-server
+then
+	echo "Failed to install rustdesk-server"
+	exit 1
+fi
 iocage exec "${JAIL_NAME}" sysrc rustdesk_hbbr_enable="YES"
 iocage exec "${JAIL_NAME}" sysrc rustdesk_hbbs_enable="YES"
 
