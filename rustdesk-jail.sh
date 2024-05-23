@@ -23,7 +23,7 @@ VNET="on"
 POOL_PATH=""
 JAIL_NAME="rustdesk"
 CONFIG_NAME="rustdesk-config"
-SERVER="127.0.0.1"
+SERVER=""
 
 # Check for uptimekuma-config and set configuration
 SCRIPT=$(readlink -f "$0")
