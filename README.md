@@ -22,12 +22,14 @@ Download the repository to a convenient directory on your TrueNAS system by chan
 JAIL_IP="192.168.1.199"
 DEFAULT_GW_IP="192.168.1.1"
 POOL_PATH="/mnt/mypool/apps"
+SERVER="192.168.1.199"
 ```
 Many of the options are self-explanatory, and all should be adjusted to suit your needs, but only a few are mandatory.  The mandatory options are:
 
 * JAIL_IP is the IP address for your jail.  You can optionally add the netmask in CIDR notation (e.g., 192.168.1.199/24).  If not specified, the netmask defaults to 24 bits.  Values of less than 8 bits or more than 30 bits are invalid.
 * DEFAULT_GW_IP is the address for your default gateway
 * POOL_PATH is the path for your data pool.
+* SERVER is the IP or domain name rustdesk will use as a relay server. This will generally be the same as the jail IP. If you are going to use a domain name to access your server, this value MUST be set to that same domain name. Rustdesk will not connect otherwise UNLESS both the ID Server and Relay Server are set on the client and the device the client is connecting to.
  
 In addition, there are some other options which have sensible defaults, but can be adjusted if needed.  These are:
 
