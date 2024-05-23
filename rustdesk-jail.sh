@@ -23,6 +23,7 @@ VNET="on"
 POOL_PATH=""
 JAIL_NAME="rustdesk"
 CONFIG_NAME="rustdesk-config"
+SERVER="127.0.0.1"
 
 # Check for uptimekuma-config and set configuration
 SCRIPT=$(readlink -f "$0")
@@ -61,6 +62,10 @@ if [ -z "${DEFAULT_GW_IP}" ]; then
 fi
 if [ -z "${POOL_PATH}" ]; then
   echo 'Configuration error: POOL_PATH must be set'
+  exit 1
+fi
+if [ -z "${SERVER}" ]; then
+  echo 'Configuration error: SERVER must be set'
   exit 1
 fi
 
@@ -113,6 +118,7 @@ then
 fi
 iocage exec "${JAIL_NAME}" sysrc rustdesk_hbbr_enable="YES"
 iocage exec "${JAIL_NAME}" sysrc rustdesk_hbbs_enable="YES"
+iocage exec "${JAIL_NAME}" sysrc rustdesk_hbbs_ip="${SERVER}"
 
 # Restart
 iocage restart "${JAIL_NAME}"
@@ -120,5 +126,5 @@ iocage restart "${JAIL_NAME}"
 echo "---------------"
 echo "Installation Complete!"
 echo "---------------"
-echo "To start using your server, configure your clients to connect to ${IP} as the ID and relay server."
+echo "To start using your server, configure your clients to connect to ${SERVER} as the ID and relay server."
 echo "---------------"
