@@ -42,4 +42,4 @@ In addition, there are some other options which have sensible defaults, but can 
 Once you've downloaded the script and prepared the configuration file, run this script (`script rustdesk.log ./rustdesk-jail.sh`).  The script will run for maybe a minute.  When it finishes, your jail will be created, Rustdesk will be installed, and you should be able to start using it for remote access.
 
 ### Notes
-The key files needed for secure connections are stored outside the jail in `$POOL_PATH`
+The key files needed for secure connections are stored outside the jail in `$POOL_PATH/rustdesk`
